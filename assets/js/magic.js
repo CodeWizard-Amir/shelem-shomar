@@ -1,8 +1,8 @@
 $(document).ready(() => {
-    window.addEventListener('beforeunload', function (event) {
-        event.preventDefault(); // برای سازگاری با مرورگرهای قدیمی
-        event.returnValue = 'آیا مطمئنید می‌خواهید صفحه را ترک کنید؟ داده‌های ذخیره‌نشده از بین خواهند رفت.'; 
-    });
+    // window.addEventListener('beforeunload', function (event) {
+    //     event.preventDefault(); // برای سازگاری با مرورگرهای قدیمی
+    //     event.returnValue = 'آیا مطمئنید می‌خواهید صفحه را ترک کنید؟ داده‌های ذخیره‌نشده از بین خواهند رفت.'; 
+    // });
     function scrollToBottom() {
         const element = $('#result-table-div');
         element.scrollTop = element.scrollTop(element[0].scrollHeight);
@@ -36,7 +36,7 @@ $(document).ready(() => {
                 postive_point: 0
             },
             s_player: {
-                name: 'الیا',
+                name: 'ایلیا',
                 negative_point: 0,
                 postive_point: 0
             },
@@ -52,12 +52,12 @@ $(document).ready(() => {
         },
         player: {
             f_player: {
-                name: 'باقری',
+                name: 'امیرحسین',
                 negative_point: 0,
                 postive_point: 0
             },
             s_player: {
-                name: 'نجفی',
+                name: 'علیرضا',
                 negative_point: 0,
                 postive_point: 0
             },
@@ -108,11 +108,11 @@ $(document).ready(() => {
     })
     const GameSetting = () => {
         firstGroup.name = $("#first-group-name").val() != '' ? $("#first-group-name").val() : 'ما'
-        firstGroup.player.f_player.name = $("#first-group-player-name").val() != '' ? $("#first-group-player-name").val() : 'الیا'
+        firstGroup.player.f_player.name = $("#first-group-player-name").val() != '' ? $("#first-group-player-name").val() : 'ایلیا'
         firstGroup.player.s_player.name = $("#first-group-player2-name").val() != '' ? $("#first-group-player2-name").val() : 'سجاد'
         secondGroup.name = $("#second-group-name").val() != '' ? $("#second-group-name").val() : 'اونا'
-        secondGroup.player.f_player.name = $("#second-group-player-name").val() != '' ? $("#second-group-player-name").val() : 'باقری'
-        secondGroup.player.s_player.name = $("#second-group-player2-name").val() != '' ? $("#second-group-player2-name").val() : 'نجفی'
+        secondGroup.player.f_player.name = $("#second-group-player-name").val() != '' ? $("#second-group-player-name").val() : 'امیرحسین'
+        secondGroup.player.s_player.name = $("#second-group-player2-name").val() != '' ? $("#second-group-player2-name").val() : 'علیرضا'
         typeOfGame = "withJoker";
         let withJoker = $("#withJoker")[0].checked
         let withOutJoker = $("#withOutJoker")[0].checked
@@ -798,9 +798,15 @@ $(document).ready(() => {
     }
     const updateResult = () => {
         let res = `
-        <strong class='${firstGroup.score > secondGroup.score ? 'text-green-500' : 'text-red-500'}'>${firstGroup.score}</strong>
+        <strong class='flex flex-col justify-center items-center ${firstGroup.score > secondGroup.score ? 'text-green-500' : 'text-red-500'}'>
+        <span>${firstGroup.score}</span>
+        <span class='text-[10px] text-gray-500'>(${GameOverScore - firstGroup.score})</span>
+        </strong>
         <strong class="text-xs">اختلاف : (${Math.abs(firstGroup.score - secondGroup.score)})</strong>
-        <strong class='${firstGroup.score < secondGroup.score ? 'text-green-500' : 'text-red-500'}'>${secondGroup.score}</strong>
+        <strong class=' flex flex-col justify-center items-center ${firstGroup.score < secondGroup.score ? 'text-green-500' : 'text-red-500'}'>
+        <span>${secondGroup.score}</span>
+        <span class='text-[10px] text-gray-500'>(${GameOverScore - secondGroup.score})</span>
+        </strong>
 
         `
         $("#res-game-div").html(res)
