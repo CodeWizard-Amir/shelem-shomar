@@ -1,13 +1,22 @@
 $(document).ready(() => {
-    // window.addEventListener('beforeunload', function (event) {
-    //     event.preventDefault(); // برای سازگاری با مرورگرهای قدیمی
-    //     event.returnValue = 'آیا مطمئنید می‌خواهید صفحه را ترک کنید؟ داده‌های ذخیره‌نشده از بین خواهند رفت.'; 
-    // });
+    window.addEventListener('beforeunload', function (event) {
+        event.preventDefault(); // برای سازگاری با مرورگرهای قدیمی
+        event.returnValue = 'آیا مطمئنید می‌خواهید صفحه را ترک کنید؟ داده‌های ذخیره‌نشده از بین خواهند رفت.'; 
+    });
     function scrollToBottom() {
         const element = $('#result-table-div');
         element.scrollTop = element.scrollTop(element[0].scrollHeight);
-        console.log("object")
     }
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+        });
+    }
+    // ==============
+    $("#about-me-btn").click(() => {
+        $("#main-page").addClass("!hidden")
+        $("#about-me").removeClass("!hidden")
+    })
     // ==============
     // Local Variable
     var GameOverScore = 1165
@@ -242,7 +251,7 @@ $(document).ready(() => {
             }
             $("#otherside-score-div").removeClass("!hidden")
             $("#otherside-score-input").focus()
-
+            scrollToTop()
         }
 
     })
@@ -258,6 +267,7 @@ $(document).ready(() => {
             }
             $("#otherside-score-div").removeClass("!hidden")
             $("#otherside-score-input").focus()
+            scrollToTop()
 
         }
 
@@ -283,6 +293,8 @@ $(document).ready(() => {
             $("#new-game-set").addClass("!hidden")
             $("#otherside-score-div").removeClass("!hidden")
             $("#otherside-score-input").focus()
+            scrollToTop()
+
         }
 
     })
@@ -317,7 +329,7 @@ $(document).ready(() => {
             $("#otherside-score-div").addClass("!hidden")
             resetFormOfNewSet()
         }
-
+        scrollToTop()
     })
     // remove set
     $(document).on('click', '.remove-set-btn', function () {
@@ -435,7 +447,7 @@ $(document).ready(() => {
     // Validators
     const newGameSettingValidator = () => {
         if (whichGroupRead && whoRead && howMuchRead) {
-            if (howMuchRead <= 200 && howMuchRead % 5 == 0 || howMuchRead == "shelem" || howMuchRead == "dubbleShelem") {
+            if (howMuchRead <= 200 && howMuchRead >= 100 && howMuchRead % 5 == 0 || howMuchRead == "shelem" || howMuchRead == "dubbleShelem") {
                 return true
             }
             else {
@@ -707,7 +719,7 @@ $(document).ready(() => {
                     thisSetT.whichGroupRead.index == 2 && thisSetT.didTheyGet ? '!text-purple-600' :
                         thisSetT.whichGroupRead.index == 2 && !thisSetT.didTheyGet ? '!text-red-500' : null
             }'>${secondGroupScoreForThisSet}</td>
-            <td><span class='remove-set-btn text-red-500 fa fa-close'><span></td>
+            <td><span class='remove-set-btn  flex justify-center items-center text-2xl text-red-500 fa fa-close'><span></td>
           </tr>
         `
         $("#tbody").append(NewSetRowTableHtml)
@@ -792,9 +804,6 @@ $(document).ready(() => {
 
         `
         $("#res-game-div").html(res)
-    }
-    const giftScoreFor2setRead = () => {
-
     }
     const setTableViewAndScors = () => {
         resettheScores()

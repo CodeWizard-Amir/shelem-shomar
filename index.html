@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="manifest" href="./manifest.json">
-  <link rel="stylesheet" href="./assets/style.css" />
+  <!-- <link rel="manifest" href="../../manifest.json"> -->
+  <link rel="stylesheet" href="../assets/style.css" />
   <!-- for safari ios -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -35,7 +35,7 @@
     }
 
     #scoreTableDiv {
-      background: url('./assets/img/bg.jpg') !important;
+      background: url('../assets/img/bg.jpg') !important;
       background-repeat: no-repeat !important;
       background-size: 100% 100% !important;
     }
@@ -47,7 +47,7 @@
 
     #main-page {
       color: white;
-      background: url('./assets/img/main5.webp');
+      background: url('../assets/img/main5.webp');
       background-size: 100% 100%;
       background-repeat: no-repeat;
     }
@@ -63,8 +63,9 @@
   <title>Document</title>
 </head>
 
-<body id="btn">
-  <main id="main-page" class="flex flex-col justify-between pt-20 items-center h-[100vh] w-[100vw] overflow-hidden">
+<body>
+  <main id="main-page"
+    class=" flex flex-col justify-between pt-20 items-center h-[100vh] w-[100vw] overflow-hidden">
     <div class=""></div>
     <div class="flex flex-wrap mb-7 justify-center  items-center w-[95%]">
       <button id="new-game-btn"
@@ -125,14 +126,14 @@
           <label class="mr-2" for="withJoker">بازی با جوکر</label>
           <input class="mx-1 typeOfGame" type="radio" checked name="type-of-game" id="withJoker">
           <div class="w-12 h-14 rounded-md mx-2 border border-red-500">
-            <img src="./assets/img/joker.webp" class="w-full h-full rounded-md" alt="">
+            <img src="../assets/img/joker.webp" class="w-full h-full rounded-md" alt="">
           </div>
         </div>
         <div class="flex justify-center items-center my-4">
           <label class="mr-2" for="withOutJoker">بازی بدون جوکر</label>
           <input class="mx-1 typeOfGame" type="radio" name="type-of-game" id="withOutJoker">
           <div class="w-12 h-14 rounded-md mx-2 bg-red-500">
-            <img src="./assets/img/as.jfif" class="w-full h-full rounded-md" alt="">
+            <img src="../assets/img/as.jfif" class="w-full h-full rounded-md" alt="">
 
           </div>
         </div>
@@ -185,14 +186,14 @@
 
   </section>
   <!-- ///////// -->
-  <section id="start-game-page" class="!hidden flex flex-col items-center h-full">
-    <div id="unTransparentLayar" class="!hidden !Z-40 absolute bg-opacity-60 bg-black w-full h-full"></div>
+  <section id="start-game-page" class="!hidden flex flex-col h-[200vh] items-center">
+    <div id="unTransparentLayar" class="!hidden absolute bg-opacity-60 bg-black w-full h-full"></div>
     <div class="fixed top-[90%] right-[5%]">
       <button id="new-game-set-btn" class=" rounded-full font-bold text-white w-14 h-14 bg-red-500 "><span
           class="mt-1 fa fa-plus"></span></button>
     </div>
     <div id="new-game-set-menu"
-      class="fixed !right-[-200%] flex justify-between flex-wrap opacity-0 duration-200 top-[35%] right-[10%] w-[80%] ">
+      class="fixed !right-[-200%] z-[160] flex justify-between flex-wrap opacity-0 duration-200 top-[35%] right-[10%] w-[80%] ">
       <button id="exit-game-go-to-main-page"
         class="bg-red-500 rounded-xl ring-4 ring-red-300  text-white flex justify-center items-center w-[47%] h-fit p-3 shadow-sm my-3">
         <span class="fa fa-sign-out font-bold mx-2"></span></span>
@@ -218,7 +219,7 @@
     </div>
     <!-- New Game -->
     <div id="new-game-set"
-      class="p-5 !hidden bg-white fixed w-[80%] flex flex-col items-center top-[25%] right-[10%] shadow-md rounded-md border-2  border-t-2 !border-b-purple-500 border-b-2 !border-t-purple-500">
+      class="p-5 z-[150] !hidden bg-white fixed w-[80%] flex flex-col items-center top-[25%] right-[10%] shadow-md rounded-md border-2  border-t-2 !border-b-purple-500 border-b-2 !border-t-purple-500">
       <div class="flex flex-col items-center">
         <h2 class="font-bold my-4">تیم حاکم</h2>
         <div class="flex items-center flex-col">
@@ -262,7 +263,7 @@
           </div>
           <div id="error-alert-readScore" class="!hidden my-2 w-full justify-center items-center">
             <p class="text-red-500 text-[10px] text-center">
-              امتیاز خوانده شده را وارد کنید ! (مضرب 5 کوچتر از 200)
+              امتیاز خوانده شده را وارد کنید ! (مضرب 5 و بین 100 تا 200 )
             </p>
           </div>
         </div>
@@ -278,11 +279,11 @@
     </div>
     <!-- Score did get the otherside -->
     <div id="otherside-score-div"
-      class="p-5 !hidden bg-white fixed w-[80%] flex flex-col items-center top-[25%] right-[10%] shadow-md rounded-md border-2  border-t-2 !border-b-purple-500 border-b-2 !border-t-purple-500">
+      class="p-5 z-[160] !hidden bg-white fixed w-[80%] flex flex-col items-center top-[25%] right-[10%] shadow-md rounded-md border-2  border-t-2 !border-b-purple-500 border-b-2 !border-t-purple-500">
       <div class="my-3 items-center flex flex-col justify-between">
         <h3 id="score-get-by-otherside" class="text-sm my-4">امتیاز گرفته شده توسط فضانوردان : </h3>
-        <input autofocus placeholder="0" class="w-28 border-b border-purple-500 text-center outline-none mx-3" type="number"
-          max="200" min="0" id="otherside-score-input">
+        <input autofocus placeholder="0" class="w-28 border-b border-purple-500 text-center outline-none mx-3"
+          type="number" max="200" min="0" id="otherside-score-input">
         <div id="error-alert-otherSide-score" class="!hidden my-2 w-full justify-center items-center">
           <p class="text-red-500 text-[10px] text-center">
             امتیاز تیم مقابل را وارد کنید ! (کوچتر از 200 و مضرب 5)
@@ -295,7 +296,7 @@
     </div>
     <!-- Cheating div -->
     <div id="cheating-div"
-      class="!hidden fixed bg-white flex flex-col right-[5%] top-[20%] p-4 items-center  w-[90%] shadow-md rounded-md border-t-2 border-b-2 border-purple-500">
+      class="!hidden z-[170] fixed bg-white flex flex-col right-[5%] top-[20%] p-4 items-center  w-[90%] shadow-md rounded-md border-t-2 border-b-2 border-purple-500">
       <h2 class="my-3 font-bold">تقلب !</h2>
       <div class="flex w-full my-3 justify-center items-center">
         <label class="text-sm" for="cheating_smal">هر حرکت مشکوک ( 30 )</label>
@@ -358,7 +359,7 @@
         </table>
       </div>
       <div id="res-game-div"
-        class="absolute w-[60%] right-[20%] bottom-[18%] py-5 px-2 flex justify-between items-center">
+        class="absolute w-[60%] z-0 right-[20%] bottom-[18%] py-5 px-2 flex justify-between items-center">
         <strong>0</strong>
         <strong class="text-xs">اختلاف : (0)</strong>
         <strong>0</strong>
@@ -370,7 +371,7 @@
   <section id="result-of-game" class="!hidden w-full h-[100vh]">
     <div class="flex justify-between items-center p-5">
       <div class="flex py-5 w-1/2 border-l-2 border-purple-600 flex-col justify-center items-center">
-        <img class="!w-36 !h-28" src="./assets/img/taj.png" alt="">
+        <img class="!w-36 !h-28" src="../assets/img/taj.png" alt="">
         <strong class="my-2 text-green-500">برنده !</strong>
         <p class="font-bold my-2">ما</p>
         <p class="font-bold my-2">1200</p>
@@ -392,7 +393,7 @@
         </div>
       </div>
       <div class="flex w-1/2  flex-col justify-center items-center">
-        <img class="!w-32 !h-28" src="./assets/img/golden_fuck.png" alt="">
+        <img class="!w-32 !h-28" src="../assets/img/golden_fuck.png" alt="">
         <strong class="my-2">بازنده !</strong>
 
         <p class="font-bold my-2">ما</p>
@@ -430,38 +431,41 @@
     </div>
   </section>
   <!-- //////////////////////// -->
-   <!-- about me -->
-    <section id="about-me" class="!hidden w-full h-[100vh]">
-      <div class="w-full p-5 flex justify-center items-center">
-        <img src="./assets/img/mrNouri.jpg" class="w-32 h-32 rounded-full" alt="">
+  <!-- about me -->
+  <section id="about-me" class="!hidden w-full h-[100vh]">
+    <div class="w-full p-5 flex justify-center items-center">
+      <img src="../assets/img/mrNouri.jpg" class="w-32 h-32 rounded-full" alt="">
+    </div>
+    <div class="flex flex-col space-y-5 w-full justify-center items-center p-5">
+      <div class="">
+        <p>امیرسجاد نوری هستم ، برنامه نویس فول استک</p>
       </div>
-      <div class="flex flex-col space-y-5 w-full justify-center items-center p-5">
-        <div class="">
-          <p>امیرسجاد نوری هستم ، برنامه نویس فول استک</p>
-        </div>
-        <div class="flex items-center justify-center">
-          <b class="fab fa-github text-xl mx-2 text-green-500" ></b>
-          <a class="text-sm text-blue-500" href="https://github.com/CodeWizard-amir">https://github.com/CodeWizard-amir</a>
-        </div>
-        <div class="flex items-center justify-center">
-          <b class="fab fa-telegram text-xl mx-2 text-sky-500" ></b>
-          <a dir="ltr" class="text-sm text-blue-500" href="https://t.me/@Amir_sjd12">@Amir_sjd12</a>
-        </div>
-        <div class="flex items-center justify-center">
-          <b class="fa fa-envelope text-xl mx-2 text-purple-500" ></b>
-          <a dir="ltr" class="text-sm text-blue-500" href="mailto:amirwebsajjad@gamil.com">amirwebsajjad@gamil.com</a>
-        </div>
-        <div class="flex items-center justify-center">
-          <b class="fab fa-internet-explorer text-xl mx-2 text-rose-500" ></b>
-          <a dir="ltr" class="text-sm text-blue-500" href="https://CodeWizard-amir.github.io/mr-nouri">CodeWizard-amir.github.io/mr-nouri</a>
-        </div>
+      <div class="flex items-center justify-center">
+        <b class="fab fa-github text-xl mx-2 text-green-500"></b>
+        <a class="text-sm text-blue-500"
+          href="https://github.com/CodeWizard-amir">https://github.com/CodeWizard-amir</a>
       </div>
-    </section>
+      <div class="flex items-center justify-center">
+        <b class="fab fa-telegram text-xl mx-2 text-sky-500"></b>
+        <a dir="ltr" class="text-sm text-blue-500" href="https://t.me/@Amir_sjd12">@Amir_sjd12</a>
+      </div>
+      <div class="flex items-center justify-center">
+        <b class="fa fa-envelope text-xl mx-2 text-purple-500"></b>
+        <a dir="ltr" class="text-sm text-blue-500" href="mailto:amirwebsajjad@gamil.com">amirwebsajjad@gamil.com</a>
+      </div>
+      <div class="flex items-center justify-center">
+        <b class="fab fa-internet-explorer text-xl mx-2 text-rose-500"></b>
+        <a dir="ltr" class="text-sm text-blue-500"
+          href="https://CodeWizard-amir.github.io/mr-nouri">CodeWizard-amir.github.io/mr-nouri</a>
+      </div>
+    </div>
+    <div class="w-[90%] flex justify-between items-center mx-auto">
+      <button onclick="window.location.reload()" class=" bg-rose-500 w-full p-5 text-white">رفتن به صفحه اصلی</button>
+    </div>
+  </section>
 
 </body>
-<script src="./assets/js/jquery.js"></script>
-<script src="./assets/js/magic.js"></script>
-<script src="./app.js"></script>
-<script src="./sw.js"></script>
+<script src="../assets/js/jquery.js"></script>
+<script src="../assets/js/magic.js"></script>
 
 </html>

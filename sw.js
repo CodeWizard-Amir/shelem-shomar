@@ -2,12 +2,8 @@ const STATIC_CACHE_NAME = "static-25";
 const DYNAMIC_CACHE_NAME = "dynamic-13";
 const STATIC_CACHE_ASSETS = [
   "/",
-  // "http://127.0.0.1:5500/src/pages/index.html",
-  // "http://127.0.0.1:5500/src/pages/offline.html",
-  // "http://127.0.0.1:5500/src/pages/notes.html",
-  // "http://127.0.0.1:5500/src/assets/style.css",
-  // "http://127.0.0.1:5500/src/pages/app.js",
-  // "http://127.0.0.1:5500/src/assets/img/download.png"
+  "https://codewizard-amir.github.io/shelem-shomar/index.html",
+  "https://codewizard-amir.github.io/shelem-shomar/offline.html"
 ];
 self.addEventListener("install", (event) => {
   console.log("service worker installing ...");
@@ -51,7 +47,7 @@ self.addEventListener("fetch", (event) => {
                   }
                   if(request.url.match(/\.(jpg?g|png|gif|svg)$/))
                   {
-                    return cache.match('./assets/img/download.png')
+                    return
                   }
 
                 })

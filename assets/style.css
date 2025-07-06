@@ -620,6 +620,50 @@ video {
   top: 90%;
 }
 
+.z-10{
+  z-index: 10;
+}
+
+.z-\[\]{
+  z-index: ;
+}
+
+.z-\[1\]{
+  z-index: 1;
+}
+
+.z-\[150\]{
+  z-index: 150;
+}
+
+.z-\[160\]{
+  z-index: 160;
+}
+
+.z-\[170\]{
+  z-index: 170;
+}
+
+.\!z-40{
+  z-index: 40 !important;
+}
+
+.\!z-\[\]{
+  z-index:  !important;
+}
+
+.z-\[100\]{
+  z-index: 100;
+}
+
+.z-\[30\]{
+  z-index: 30;
+}
+
+.z-0{
+  z-index: 0;
+}
+
 .mx-1{
   margin-left: 0.25rem;
   margin-right: 0.25rem;
@@ -708,10 +752,6 @@ video {
   margin-top: 1.75rem;
 }
 
-.ms-2{
-  margin-inline-start: 0.5rem;
-}
-
 .block{
   display: block;
 }
@@ -752,6 +792,10 @@ video {
   height: 3.5rem;
 }
 
+.h-32{
+  height: 8rem;
+}
+
 .h-\[100vh\]{
   height: 100vh;
 }
@@ -769,8 +813,20 @@ video {
   height: 100%;
 }
 
-.h-32{
-  height: 8rem;
+.h-12{
+  height: 3rem;
+}
+
+.h-7{
+  height: 1.75rem;
+}
+
+.h-\[\]{
+  height: ;
+}
+
+.h-\[200vh\]{
+  height: 200vh;
 }
 
 .\!w-32{
@@ -834,8 +890,8 @@ video {
   width: 42%;
 }
 
-.w-\[45\%\]{
-  width: 45%;
+.w-\[47\%\]{
+  width: 47%;
 }
 
 .w-\[60\%\]{
@@ -862,8 +918,8 @@ video {
   width: 100%;
 }
 
-.w-\[47\%\]{
-  width: 47%;
+.w-7{
+  width: 1.75rem;
 }
 
 .border-collapse{
@@ -1044,6 +1100,16 @@ video {
   background-color: rgb(254 215 170 / var(--tw-bg-opacity, 1));
 }
 
+.bg-orange-500{
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 115 22 / var(--tw-bg-opacity, 1));
+}
+
+.bg-purple-500{
+  --tw-bg-opacity: 1;
+  background-color: rgb(168 85 247 / var(--tw-bg-opacity, 1));
+}
+
 .bg-purple-950{
   --tw-bg-opacity: 1;
   background-color: rgb(59 7 100 / var(--tw-bg-opacity, 1));
@@ -1069,9 +1135,9 @@ video {
   background-color: rgb(251 113 133 / var(--tw-bg-opacity, 1));
 }
 
-.bg-sky-500{
+.bg-rose-500{
   --tw-bg-opacity: 1;
-  background-color: rgb(14 165 233 / var(--tw-bg-opacity, 1));
+  background-color: rgb(244 63 94 / var(--tw-bg-opacity, 1));
 }
 
 .bg-violet-500{
@@ -1082,11 +1148,6 @@ video {
 .bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
-}
-
-.bg-orange-500{
-  --tw-bg-opacity: 1;
-  background-color: rgb(249 115 22 / var(--tw-bg-opacity, 1));
 }
 
 .bg-opacity-60{
@@ -1215,6 +1276,11 @@ video {
   line-height: 1rem;
 }
 
+.text-2xl{
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
 .font-bold{
   font-weight: 700;
 }
@@ -1237,6 +1303,11 @@ video {
 .\!text-yellow-300{
   --tw-text-opacity: 1 !important;
   color: rgb(253 224 71 / var(--tw-text-opacity, 1)) !important;
+}
+
+.text-blue-500{
+  --tw-text-opacity: 1;
+  color: rgb(59 130 246 / var(--tw-text-opacity, 1));
 }
 
 .text-green-500{
@@ -1279,14 +1350,9 @@ video {
   color: rgb(220 38 38 / var(--tw-text-opacity, 1));
 }
 
-.text-white{
+.text-rose-500{
   --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
-}
-
-.text-blue-500{
-  --tw-text-opacity: 1;
-  color: rgb(59 130 246 / var(--tw-text-opacity, 1));
+  color: rgb(244 63 94 / var(--tw-text-opacity, 1));
 }
 
 .text-sky-500{
@@ -1294,9 +1360,9 @@ video {
   color: rgb(14 165 233 / var(--tw-text-opacity, 1));
 }
 
-.text-rose-500{
+.text-white{
   --tw-text-opacity: 1;
-  color: rgb(244 63 94 / var(--tw-text-opacity, 1));
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
 .opacity-0{
@@ -1357,6 +1423,11 @@ video {
   --tw-ring-color: rgb(190 242 100 / var(--tw-ring-opacity, 1));
 }
 
+.ring-orange-300{
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(253 186 116 / var(--tw-ring-opacity, 1));
+}
+
 .ring-orange-400{
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(251 146 60 / var(--tw-ring-opacity, 1));
@@ -1382,19 +1453,9 @@ video {
   --tw-ring-color: rgb(253 164 175 / var(--tw-ring-opacity, 1));
 }
 
-.ring-sky-300{
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(125 211 252 / var(--tw-ring-opacity, 1));
-}
-
 .ring-violet-300{
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(196 181 253 / var(--tw-ring-opacity, 1));
-}
-
-.ring-orange-300{
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(253 186 116 / var(--tw-ring-opacity, 1));
 }
 
 .blur{
@@ -1428,47 +1489,6 @@ video {
 html,
 body {
   font-family: Vazir !important;
-}
-
-.before\:absolute::before{
-  content: var(--tw-content);
-  position: absolute;
-}
-
-.before\:top-\[\]::before{
-  content: var(--tw-content);
-  top: ;
-}
-
-.before\:top-\[50\%\]::before{
-  content: var(--tw-content);
-  top: 50%;
-}
-
-.before\:right-10::before{
-  content: var(--tw-content);
-  right: 2.5rem;
-}
-
-.before\:h-1::before{
-  content: var(--tw-content);
-  height: 0.25rem;
-}
-
-.before\:h-4::before{
-  content: var(--tw-content);
-  height: 1rem;
-}
-
-.before\:w-14::before{
-  content: var(--tw-content);
-  width: 3.5rem;
-}
-
-.before\:bg-black::before{
-  content: var(--tw-content);
-  --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1));
 }
 
 .\[\&_td\]\:p-2 td{
