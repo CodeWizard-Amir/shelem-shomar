@@ -1,8 +1,8 @@
 $(document).ready(() => {
-    // window.addEventListener('beforeunload', function (event) {
-    //     event.preventDefault(); // برای سازگاری با مرورگرهای قدیمی
-    //     event.returnValue = 'آیا مطمئنید می‌خواهید صفحه را ترک کنید؟ داده‌های ذخیره‌نشده از بین خواهند رفت.'; 
-    // });
+    window.addEventListener('beforeunload', function (event) {
+        event.preventDefault(); // برای سازگاری با مرورگرهای قدیمی
+        event.returnValue = 'آیا مطمئنید می‌خواهید صفحه را ترک کنید؟ داده‌های ذخیره‌نشده از بین خواهند رفت.'; 
+    });
     function scrollToBottom() {
         const element = $('#result-table-div');
         element.scrollTop = element.scrollTop(element[0].scrollHeight);
