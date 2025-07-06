@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="fa-IR" dir="rtl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="manifest" href="./manifest.json">
+  <link rel="stylesheet" href="./assets/style.css" />
+  <!-- for safari ios -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Note">
+  <meta name="apple-touch-icon" size="50*50" content="/">
+  <!-- end safary -->
+  <!-- for Internet explorer -->
+  <meta name="msaplication-TitleImage" content="#">
+  <meta name="msaplication-TitleColor" content="white">
+  <meta name="msaplication-starturl" content="/">
+  <!-- end IE -->
+  <meta name="theme-color" content="purple">
+  <style>
+    body,
+    * {
+      scrollbar-width: none;
+      /* برای فایرفاکس */
+      -ms-overflow-style: none;
+      /* برای IE و Edge */
+    }
+
+    /* برای مرورگرهای مبتنی بر Webkit مانند کروم و سافاری */
+    body::-webkit-scrollbar,
+    *::-webkit-scrollbar {
+      display: none;
+    }
+
+    #scoreTableDiv {
+      background: url('./assets/img/bg.jpg') !important;
+      background-repeat: no-repeat !important;
+      background-size: 100% 100% !important;
+    }
+
+    #tbody td,
+    #res-game-div>* {
+      direction: ltr;
+    }
+
+    #main-page {
+      color: white;
+      background: url('./assets/img/main5.webp');
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+    }
+
+    #result-of-game {
+      background: linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255), rgb(218, 218, 218), rgb(182, 182, 182), rgb(20, 20, 20))
+    }
+
+    #thead {
+      background: #E5C588 !important;
+    }
+  </style>
+  <title>Document</title>
+</head>
+
+<body id="btn">
+  <main id="main-page" class="flex flex-col justify-between pt-20 items-center h-[100vh] w-[100vw] overflow-hidden">
+    <div class=""></div>
+    <div class="flex flex-wrap mb-7 justify-center  items-center w-[95%]">
+      <button id="new-game-btn"
+        class="w-[42%] mx-2 px-4  p-2 ring-4 ring-indigo-500  rounded-full bg-indigo-400 bg-opacity-60 text-xl flex justify-center items-center font-bold">بازی
+        جدید
+        <span class="fas fa-fire-alt mx-2 text-lg"></span>
+      </button>
+      <button id="about-me-btn"
+        class="w-[42%] mx-2  p-2 px-1 ring-4 ring-red-500  rounded-full bg-red-400 bg-opacity-60 text-white text-xl font-bold flex justify-center items-center">
+        درباره ما
+        <span class="	fas fa-leaf text-lg mx-2"></span>
+      </button>
+    </div>
+  </main>
+  <!-- ///////// -->
+  <section id="start-game-setting" class="!hidden w-[100vw] p-1 h-[100vh] flex flex-col items-center">
+    <div class="shadow-sm flex flex-col justify-center items-center w-full border-2 pt-3 pb-1">
+      <h2 class="font-bold">مشخصات تیم ها</h2>
+      <div class="flex py-3 w-full flex-col justify-between">
+        <div class="flex flex-col mt-4 w-full justify-center items-center">
+          <div class="flex justify-between items-center my-2">
+            <p class="mx-5">نام تیم اول :</p>
+            <input id="first-group-name" placeholder="ما" type="text"
+              class="border-b my-1 w-36 px-2 text-center flex justify-center items-center border-purple-800 outline-none">
+          </div>
+          <div class="flex flex-col my-2">
+            <p class="mx-5">نام بازیکنان تیم اول :</p>
+            <div class="flex px-3 my-4 justify-center">
+              <input id="first-group-player-name" placeholder="الیا" type="text"
+                class="border-b mx-3 w-[40%] my-1 px-2 text-center flex justify-center items-center border-purple-800 outline-none">
+              <input id="first-group-player2-name" placeholder="سجاد" type="text"
+                class="border-b mx-3 w-[40%] my-1 px-2 text-center flex justify-center items-center border-purple-800 outline-none">
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col mt-4 w-full justify-center items-center">
+          <div class="flex items-center justify-between my-2">
+            <p class="mx-5">نام تیم دوم :</p>
+            <input id="second-group-name" placeholder="اونا" type="text"
+              class="border-b w-36 my-1 px-2 text-center flex justify-center items-center border-purple-800 outline-none">
+          </div>
+          <div class="flex flex-col my-2">
+            <p class="mx-5">نام بازیکنان تیم دوم :</p>
+            <div class="flex px-3 my-4 justify-between">
+              <input id="second-group-player-name" placeholder="باقری" type="text"
+                class="border-b mx-3 w-[40%] my-1 px-2 text-center flex justify-center items-center border-purple-800 outline-none">
+              <input id="second-group-player2-name" placeholder="نجفی" type="text"
+                class="border-b mx-3 w-[40%] my-1 px-2 text-center flex justify-center items-center border-purple-800 outline-none">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="shadow-sm flex mt-2 flex-col justify-center items-center w-full border-2 py-3">
+      <h2 class="font-bold">نوع بازی</h2>
+      <div class="flex my-4 justify-between items-center">
+        <div class="flex border-l-2 border-purple-800 justify-center items-center my-4">
+          <label class="mr-2" for="withJoker">بازی با جوکر</label>
+          <input class="mx-1 typeOfGame" type="radio" checked name="type-of-game" id="withJoker">
+          <div class="w-12 h-14 rounded-md mx-2 border border-red-500">
+            <img src="./assets/img/joker.webp" class="w-full h-full rounded-md" alt="">
+          </div>
+        </div>
+        <div class="flex justify-center items-center my-4">
+          <label class="mr-2" for="withOutJoker">بازی بدون جوکر</label>
+          <input class="mx-1 typeOfGame" type="radio" name="type-of-game" id="withOutJoker">
+          <div class="w-12 h-14 rounded-md mx-2 bg-red-500">
+            <img src="./assets/img/as.jfif" class="w-full h-full rounded-md" alt="">
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="shadow-sm flex mt-2 flex-col justify-center items-center w-full border-2 py-3">
+      <h2 class="font-bold">امتیاز پایان بازی</h2>
+      <div class="flex my-6 flex-col w-full px-5 items-center">
+        <div class="flex w-full justify-between items-center">
+          <div class="flex justify-center items-center spaxe-x-2">
+            <label class=" mt-1" for="sixty">600</label>
+            <input class="mx-2" type="radio" value="600" name="scoreOfGame" id="sixty">
+          </div>
+          <div class="w-[2px] h-full bg-purple-950"></div>
+          <div class="flex justify-center items-center spaxe-x-2">
+            <label class="mt-1" for="thousend">1165</label>
+            <input class="mx-2" checked type="radio" value="1165" name="scoreOfGame" id="thousend">
+          </div>
+          <div class="w-[2px] h-full bg-purple-950"></div>
+
+          <div class="flex justify-center items-center spaxe-x-2">
+            <label class=" mt-1" for="towThousend">2000</label>
+            <input class="mx-2" type="radio" name="scoreOfGame" value="2000" id="towThousend">
+          </div>
+          <div class="w-[2px] h-full bg-purple-950"></div>
+          <div class="flex justify-center items-center spaxe-x-2">
+            <label class="mt-1" for="custom">دلخواه</label>
+            <input class="mx-2" type="radio" name="scoreOfGame" id="custom">
+          </div>
+        </div>
+        <div id="custom-score-input-div" class="flex !hidden mt-5 justify-between items-center">
+          <label for="">امتیاز پایان بازی : </label>
+          <input placeholder="..." type="number" id="custom-score-input"
+            class="border-b my-1 px-2 text-center flex justify-center items-center border-purple-800 outline-none">
+        </div>
+      </div>
+    </div>
+    <div class="flex mt-7 w-full justify-center items-center">
+      <button id="start-game-btn"
+        class="w-[40%] mx-4 p-3 bg-green-100 rounded-full ring-4 ring-green-400 text-green-800 font-bold flex justify-center items-center">شروع
+        بازی
+        <span class="fas fa-radiation mx-2 font-bold"></span>
+      </button>
+      <button id="back-to-main-page"
+        class="w-[40%] mx-4 p-3 bg-orange-200 text-orange-600 flex justify-center items-center ring-4 ring-orange-400 font-bold rounded-full">بازگشت
+        <span class="fas fa-arrow-circle-right mx-2 font-bold"></span>
+      </button>
+    </div>
+
+  </section>
+  <!-- ///////// -->
+  <section id="start-game-page" class="!hidden flex flex-col items-center h-full">
+    <div id="unTransparentLayar" class="!hidden !Z-40 absolute bg-opacity-60 bg-black w-full h-full"></div>
+    <div class="fixed top-[90%] right-[5%]">
+      <button id="new-game-set-btn" class=" rounded-full font-bold text-white w-14 h-14 bg-red-500 "><span
+          class="mt-1 fa fa-plus"></span></button>
+    </div>
+    <div id="new-game-set-menu"
+      class="fixed !right-[-200%] flex justify-between flex-wrap opacity-0 duration-200 top-[35%] right-[10%] w-[80%] ">
+      <button id="exit-game-go-to-main-page"
+        class="bg-red-500 rounded-xl ring-4 ring-red-300  text-white flex justify-center items-center w-[47%] h-fit p-3 shadow-sm my-3">
+        <span class="fa fa-sign-out font-bold mx-2"></span></span>
+        خروج
+
+      </button>
+      <button id="show-cheating-box-btn"
+        class="bg-rose-400 rounded-xl ring-4 ring-rose-300  text-white flex justify-center items-center w-[47%] h-fit p-3 shadow-sm my-3">
+        <span>تقلب</span>
+        <span class="	fas fa-poop mx-1 font-bold"></span>
+      </button>
+      <button id="new-set-btn"
+        class="bg-violet-500 text-white bg-opacity-90 flex justify-center items-center rounded-xl ring-4 ring-violet-300  w-[47%] h-fit p-3 shadow-sm my-3">دست
+        جدید
+        <span class="fa fa-plus mx-2"></span>
+      </button>
+      <button id="remove-last-set-btn"
+        class="bg-orange-500 rounded-xl ring-4 ring-orange-300  text-white flex justify-center items-center w-[47%] h-fit p-3 shadow-sm my-3">حذف
+        دست
+        اخر
+        <span class="fa fa-remove font-bold"></span>
+      </button>
+    </div>
+    <!-- New Game -->
+    <div id="new-game-set"
+      class="p-5 !hidden bg-white fixed w-[80%] flex flex-col items-center top-[25%] right-[10%] shadow-md rounded-md border-2  border-t-2 !border-b-purple-500 border-b-2 !border-t-purple-500">
+      <div class="flex flex-col items-center">
+        <h2 class="font-bold my-4">تیم حاکم</h2>
+        <div class="flex items-center flex-col">
+          <div class="flex !w-fit flex-wrap justify-between">
+            <div class="flex mx-4">
+              <label id="fg-lable" class="mx-1" for="set-first-group-name"></label>
+              <input class="set_group_name" type="radio" value=" " name="set_group_name" id="set-first-group-name">
+            </div>
+            <div class="flex mx-4">
+              <label id="sg-lable" class="mx-1" for="set-second-group-name"></label>
+              <input class="set_group_name" type="radio" value="" name="set_group_name" id="set-second-group-name">
+            </div>
+
+          </div>
+          <div id="error-alert-whichGroupRead" class="!hidden my-2 w-full justify-center items-center">
+            <p class="text-red-500 text-[10px] text-center">
+              لطفا تیم حاکم را انتخاب کنید !
+            </p>
+          </div>
+        </div>
+
+        <div id="dude-commited-name-div" class="flex !hidden flex-col items-center my-3 border-t border-b p-3">
+          <h2 class="font-bold my-4">نام شخص متعهد</h2>
+          <div class="flex flex-col justify-center items-center">
+            <div id="box-of-players-name" class="flex justify-between ">
+            </div>
+            <div id="error-alert-whoRead" class="!hidden my-2 w-full justify-center items-center">
+              <p class="text-red-500 text-[10px] text-center">
+                شخص متعهد را انتخاب کنید !
+              </p>
+            </div>
+          </div>
+
+
+        </div>
+        <div class="flex flex-col justify-center items-center">
+          <div class="my-3 items-center flex justify-between">
+            <h3 class="text-sm">امتیاز خوانده شده : </h3>
+            <input class="w-28 border-b border-purple-500 text-center outline-none mx-3" type="number" max="200" min="0"
+              id="read-score-input">
+          </div>
+          <div id="error-alert-readScore" class="!hidden my-2 w-full justify-center items-center">
+            <p class="text-red-500 text-[10px] text-center">
+              امتیاز خوانده شده را وارد کنید ! (مضرب 5 کوچتر از 200)
+            </p>
+          </div>
+        </div>
+        <div class="w-full flex justify-between items-center my-4">
+          <button id="dubbleShelem" class="text-sm w-16 ring-2 py-2 ring-purple-400 text-purple-700 rounded-sm">شلم
+            دوبل</button>
+          <button id="register-game"
+            class="text-sm w-20 ring-4 py-2 ring-indigo-200 text-white bg-indigo-500 rounded-sm">ثبت</button>
+          <button id="Shelem" class="text-sm w-16 ring-2 py-2 ring-purple-400 text-purple-700 rounded-sm">شلم</button>
+        </div>
+
+      </div>
+    </div>
+    <!-- Score did get the otherside -->
+    <div id="otherside-score-div"
+      class="p-5 !hidden bg-white fixed w-[80%] flex flex-col items-center top-[25%] right-[10%] shadow-md rounded-md border-2  border-t-2 !border-b-purple-500 border-b-2 !border-t-purple-500">
+      <div class="my-3 items-center flex flex-col justify-between">
+        <h3 id="score-get-by-otherside" class="text-sm my-4">امتیاز گرفته شده توسط فضانوردان : </h3>
+        <input autofocus placeholder="0" class="w-28 border-b border-purple-500 text-center outline-none mx-3" type="number"
+          max="200" min="0" id="otherside-score-input">
+        <div id="error-alert-otherSide-score" class="!hidden my-2 w-full justify-center items-center">
+          <p class="text-red-500 text-[10px] text-center">
+            امتیاز تیم مقابل را وارد کنید ! (کوچتر از 200 و مضرب 5)
+          </p>
+        </div>
+      </div>
+      <button id="otherside-score-btn"
+        class="text-sm my-5 w-20 ring-4 py-2 ring-indigo-200 text-white bg-indigo-500 rounded-sm">ثبت</button>
+
+    </div>
+    <!-- Cheating div -->
+    <div id="cheating-div"
+      class="!hidden fixed bg-white flex flex-col right-[5%] top-[20%] p-4 items-center  w-[90%] shadow-md rounded-md border-t-2 border-b-2 border-purple-500">
+      <h2 class="my-3 font-bold">تقلب !</h2>
+      <div class="flex w-full my-3 justify-center items-center">
+        <label class="text-sm" for="cheating_smal">هر حرکت مشکوک ( 30 )</label>
+        <input class="mx-2 cheat-amout-radio" value="30" type="radio" name="cheat-game" id="cheating_smal">
+      </div>
+      <div class="flex w-full my-3 justify-center items-center">
+        <label class="text-sm" for="cheating_big">تقلب بزرگ - گفتن حکم ... ( 100 )</label>
+        <input class="mx-2 cheat-amout-radio" value="100" type="radio" name="cheat-game" id="cheating_big">
+      </div>
+      <div class="flex w-full my-1 justify-center items-center">
+        <input class="outline-none text-center px-3 py-2 border-b border-purple-500" type="number" name=""
+          placeholder="امتیاز دلخواه ..." id="cheat-amout-input">
+      </div>
+      <div class="flex my-3 py-4 border-t border-b justify-between items-center">
+        <div class="flex mx-3 items-center justify-center">
+          <label class="mx-1" for="chaet_pos">مثبت</label>
+          <input class="cheating_signed" value="pos" type="radio" name="cheating_signed" id="chaet_pos">
+        </div>
+        <div class="flex mx-3 items-center justify-center">
+          <label class="mx-1" for="cheat_neg">منفی</label>
+          <input class="cheating_signed" value="neg" type="radio" name="cheating_signed" id="cheat_neg">
+        </div>
+      </div>
+      <!-- ----------------------- -->
+      <div class="flex my-3 border-b pb-4 justify-between items-center">
+        <div class="flex mx-3 items-center justify-center">
+          <label id="f_gr_label" class="mx-1" for="f_gr">ما</label>
+          <input class="cheating_to" type="radio" value="ما" name="cheating_to" id="f_gr">
+        </div>
+        <div class="flex mx-3 items-center justify-center">
+          <label id="s_gr_label" class="mx-1" for="s_gr">اونا</label>
+          <input class="cheating_to" type="radio" value="اونا" name="cheating_to" id="s_gr">
+        </div>
+      </div>
+      <!-- ---------------------- -->
+      <div class="flex justify-between items-center p-3">
+        <button id="register-cheating-btn"
+          class="w-20 py-2 ring-4 font-bold ring-indigo-400 text-white bg-indigo-500 mx-3 rounded-sm">ثبت</button>
+        <button id="cancel-cheat-btn"
+          class="w-20 py-2 ring-4 font-bold ring-purple-400 text-purple-700 mx-3 rounded-sm">انصراف</button>
+      </div>
+    </div>
+    <div id="scoreTableDiv" class="w-full h-[100vh] pt-20">
+      <div id="result-table-div" class="mx-auto  w-[82%] h-[540px] overflow-scroll overflowan">
+        <table id="scoreTable" class=" [&_td]:p-2 text-center w-full !text-sm">
+          <thead id="thead" class="bg-white sticky  bg-opacity-95 top-[0px] w-full [&_th]:p-2">
+            <tr class=" border-collapse border-gray-700">
+              <th class="rounded-r-full">#</th>
+              <th id="th-firstGroupName" class="border-r  border-collapse border-gray-700">
+              </th>
+              <th class="border-r  border-collapse border-gray-700">تعهد</th>
+              <th id="th-secondGroupName" class="border-r  border-collapse border-gray-700">
+              </th>
+              <th class="rounded-l-full border-r border-collapse border-gray-700">#</th>
+            </tr>
+          </thead>
+          <tbody id="tbody">
+
+          </tbody>
+        </table>
+      </div>
+      <div id="res-game-div"
+        class="absolute w-[60%] right-[20%] bottom-[18%] py-5 px-2 flex justify-between items-center">
+        <strong>0</strong>
+        <strong class="text-xs">اختلاف : (0)</strong>
+        <strong>0</strong>
+      </div>
+    </div>
+
+  </section>
+  <!-- ///////// -->
+  <section id="result-of-game" class="!hidden w-full h-[100vh]">
+    <div class="flex justify-between items-center p-5">
+      <div class="flex py-5 w-1/2 border-l-2 border-purple-600 flex-col justify-center items-center">
+        <img class="!w-36 !h-28" src="./assets/img/taj.png" alt="">
+        <strong class="my-2 text-green-500">برنده !</strong>
+        <p class="font-bold my-2">ما</p>
+        <p class="font-bold my-2">1200</p>
+        <p class="font-bold text-sm my-2">345 گزاشتن کون حریف</p>
+        <p class="font-bold text-sm my-2">550 گرفتن از خایه های خود</p>
+        <div class="font-bold text-sm my-2 flex justify-center items-center">
+          <p class="mx-2">سجاد</span>
+          <div class="flex flex-col">
+            <span class="text-red-500">130-</span>
+            <span class="text-green-500">700+</span>
+          </div>
+        </div>
+        <div class="font-bold text-sm my-2 flex justify-center items-center">
+          <p class="mx-2">سجاد</span>
+          <div class="flex flex-col">
+            <span>130-</span>
+            <span>700+</span>
+          </div>
+        </div>
+      </div>
+      <div class="flex w-1/2  flex-col justify-center items-center">
+        <img class="!w-32 !h-28" src="./assets/img/golden_fuck.png" alt="">
+        <strong class="my-2">بازنده !</strong>
+
+        <p class="font-bold my-2">ما</p>
+        <p class="font-bold my-2">1200</p>
+        <p class="font-bold text-sm my-2">345گزاشتن کون حریف</p>
+        <p class="font-bold text-sm my-2">550 گرفتن از خایه های خود</p>
+        <div class="font-bold text-sm my-2 flex justify-center items-center">
+          <p class="mx-2">سجاد</span>
+          <div class="flex flex-col">
+            <span>130-</span>
+            <span>700+</span>
+          </div>
+        </div>
+        <div class="font-bold text-sm my-2 flex justify-center items-center">
+          <p class="mx-2">سجاد</span>
+          <div class="flex flex-col">
+            <span>130-</span>
+            <span>700+</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex w-full justify-center items-center p-5">
+      <div class="my-2  p-3">
+        <p>MVP : امیرسجاد نوری</p>
+      </div>
+      <div class="my-2 border-r-2 border-lime-500 p-3">
+        <p>KVT : امیرسجاد نوری</p>
+      </div>
+    </div>
+    <div class="p-5 flex justify-center items-center w-full my-5">
+      <button class="bg-lime-50 mx-5 text-lime-600 ring-4 ring-lime-300 rounded-sm w-32 py-3">دیدن امتیارات</button>
+      <button onclick="window.location.reload()"
+        class="bg-red-50 mx-5 text-red-600 ring-4 ring-red-300 rounded-sm w-32 py-3">خروج</button>
+    </div>
+  </section>
+  <!-- //////////////////////// -->
+   <!-- about me -->
+    <section id="about-me" class="!hidden w-full h-[100vh]">
+      <div class="w-full p-5 flex justify-center items-center">
+        <img src="./assets/img/mrNouri.jpg" class="w-32 h-32 rounded-full" alt="">
+      </div>
+      <div class="flex flex-col space-y-5 w-full justify-center items-center p-5">
+        <div class="">
+          <p>امیرسجاد نوری هستم ، برنامه نویس فول استک</p>
+        </div>
+        <div class="flex items-center justify-center">
+          <b class="fab fa-github text-xl mx-2 text-green-500" ></b>
+          <a class="text-sm text-blue-500" href="https://github.com/CodeWizard-amir">https://github.com/CodeWizard-amir</a>
+        </div>
+        <div class="flex items-center justify-center">
+          <b class="fab fa-telegram text-xl mx-2 text-sky-500" ></b>
+          <a dir="ltr" class="text-sm text-blue-500" href="https://t.me/@Amir_sjd12">@Amir_sjd12</a>
+        </div>
+        <div class="flex items-center justify-center">
+          <b class="fa fa-envelope text-xl mx-2 text-purple-500" ></b>
+          <a dir="ltr" class="text-sm text-blue-500" href="mailto:amirwebsajjad@gamil.com">amirwebsajjad@gamil.com</a>
+        </div>
+        <div class="flex items-center justify-center">
+          <b class="fab fa-internet-explorer text-xl mx-2 text-rose-500" ></b>
+          <a dir="ltr" class="text-sm text-blue-500" href="https://CodeWizard-amir.github.io/mr-nouri">CodeWizard-amir.github.io/mr-nouri</a>
+        </div>
+      </div>
+    </section>
+
+</body>
+<script src="./assets/js/jquery.js"></script>
+<script src="./assets/js/magic.js"></script>
+<script src="./app.js"></script>
+<script src="./sw.js"></script>
+
+</html>
