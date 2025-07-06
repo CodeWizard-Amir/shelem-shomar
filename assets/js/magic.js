@@ -845,7 +845,7 @@ $(document).ready(() => {
         let res = `
             <div class="flex justify-between items-center p-5">
       <div class="flex py-5 w-1/2 border-l-2 border-purple-600 flex-col justify-center items-center">
-        <img class="!w-36 !h-28" src="../assets/img/taj.png" alt="">
+        <img class="!w-36 !h-28" src="./assets/img/taj.png" alt="">
         <strong  class="my-2 text-green-500">برنده !</strong>
         <p class="font-bold my-2">${winerGroup.name}</p>
         <p class="font-bold my-2 text-purple-500">${winerGroup.score}</p>
@@ -867,7 +867,7 @@ $(document).ready(() => {
         </div>
       </div>
       <div class="flex w-1/2  flex-col justify-center items-center">
-        <img class="!w-32 !h-28" src="../assets/img/golden_fuck.png" alt="">
+        <img class="!w-32 !h-28" src="./assets/img/golden_fuck.png" alt="">
         <strong class="my-2 text-red-500">بازنده !</strong>
         <p class="font-bold my-2">${loserGroup.name}</p>
         <p class="font-bold my-2 text-red-500">${loserGroup.score}</p>
