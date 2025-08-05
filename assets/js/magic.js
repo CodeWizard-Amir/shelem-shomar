@@ -1,8 +1,8 @@
 $(document).ready(() => {
-    window.addEventListener('beforeunload', function (event) {
-        event.preventDefault(); // برای سازگاری با مرورگرهای قدیمی
-        event.returnValue = 'آیا مطمئنید می‌خواهید صفحه را ترک کنید؟ داده‌های ذخیره‌نشده از بین خواهند رفت.'; 
-    });
+    // window.addEventListener('beforeunload', function (event) {
+    //     event.preventDefault(); // برای سازگاری با مرورگرهای قدیمی
+    //     event.returnValue = 'آیا مطمئنید می‌خواهید صفحه را ترک کنید؟ داده‌های ذخیره‌نشده از بین خواهند رفت.'; 
+    // });
     function scrollToBottom() {
         const element = $('#result-table-div');
         element.scrollTop = element.scrollTop(element[0].scrollHeight);
@@ -66,6 +66,7 @@ $(document).ready(() => {
     var typeOfGame
     // -----------
     $("#new-game-btn").click(() => {
+        getNotificationAccess()
         $("#main-page").addClass("!hidden")
         $("#start-game-setting").removeClass("!hidden")
     })
@@ -941,6 +942,40 @@ $(document).ready(() => {
             allPlayers: sortedPlayers
         };
     }
+    ///////////////////////////////////////////////
+    //Notification
+    const getNotificationAccess = ()=>{
+        if('Notification' in window && 'serviceWorker' in navigator )
+        {
+            Notification.requestPermission(function(res){
+                if(res === 'denied')
+                {
+                    alert('سیمکیتر باو')
+                }
+                else
+                {
+                    new Notification('عشققق داداش❤️❤️❤️❤️❤️')
+                }
+            })
+        }
+    }
+    // $("body").click(() =>{
+    //     new Notification("ماشالا ماشالا بهبه")
+    // })
+    // if('Notification' in window && 'serviceWorker' in navigator)
+    // {
+    //     alert("loplo")
+    //     Notification.requestPermission(function(res){
+    //         if(res === 'denied')
+    //         {
+    //             alert("سیکیتر باو")
+    //         }
+    //         else
+    //         {
+    //             new Notification('دمت گرممم مرد')
+    //         }
+    //     })
+    // }
 
 
 
