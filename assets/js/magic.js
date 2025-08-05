@@ -99,6 +99,7 @@ $(document).ready(() => {
         GameSetting()
         $("#th-firstGroupName").html(firstGroup.name)
         $("#th-secondGroupName").html(secondGroup.name)
+        new Notification("بازی خوبی داشته باشید !")
     })
     // ===================================================================
     // window of game menu
